@@ -25,7 +25,7 @@ const bugData = [
   {
     language: "HTML",
     question:
-      "Can someone look at my HTML? it isn't rendering properly on my landing page",
+      "Can someone look at my HTML? It isn't rendering properly on my landing page",
     image_file: "",
     user_id: 2,
   },
@@ -46,14 +46,14 @@ const bugData = [
   {
     language: "Express.js",
     question:
-      "I keep running my test and it will not pass, can someone see what i'm doing wrong?",
+      "I keep running my test and it will not pass, can someone see what I'm doing wrong?",
     image_file: "",
     user_id: 4,
   },
   {
     language: "Javascript",
     question:
-      "I wanted to check whether the variable is defined or not. For example, the following throws a not defined error How can I catch this error?",
+      "I wanted to check whether the variable is defined or not. For example, the following throws a not defined error. How can I catch this error?",
     image_file:
       "https://stackoverflow.com/questions/858181/how-to-check-a-not-defined-variable-in-javascript",
     user_id: 4,
