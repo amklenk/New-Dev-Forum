@@ -1,7 +1,41 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Bug extends Model {}
+class Bug extends Model {
+    static upvote(body, models) {
+        return models.Vote.create({
+          user_id: body.user_id,
+          bug_id: body.bug_id
+        }).then(() => {
+          return Bug.findOne({
+            where: {
+              id: body.bug_id
+            },
+            attributes: [
+              'id',
+              'language',
+              'question',
+              'image_file',
+              'created_at',
+              [
+                sequelize.literal('(SELECT COUNT(*) FROM upvote WHERE bug.id = upvote.bug_id)'),
+                'upvote_count'
+              ]
+            ],
+            include: [
+              {
+                model: models.Comment,
+                attributes: ['id', 'comment_text', 'bug_id', 'user_id', 'created_at'],
+                include: {
+                  model: models.User,
+                  attributes: ['username']
+                }
+              }
+            ]
+          });
+        });
+      }
+}
 
 Bug.init({
     id: {
@@ -21,7 +55,7 @@ Bug.init({
           len: [1]
         }
       },
-      image_file: {
+    image_file: {
         type: DataTypes.STRING,
         allowNull: false,
       },
