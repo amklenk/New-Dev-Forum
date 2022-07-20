@@ -2,14 +2,15 @@ const router = require('express').Router();
 const { User, Bug, Comment, Upvote } = require('../../models');
 
 //get all
-//api/bugs
+//GET api/users
 router.get('/', (req, res) => {});
 
 //get one
-//api/bugs/id#
+//GET api/users/id#
 router.get('/:id', (req, res) => {});
 
 //post a new user
+//POST api/users
 router.post('/', (req, res) => {})
 
 //Do we want to update or delete a user?
