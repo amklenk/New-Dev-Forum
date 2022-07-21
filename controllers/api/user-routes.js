@@ -23,26 +23,26 @@ router.get("/:id", (req, res) => {
       id: req.params.id,
     },
     //leave these out until we have the other routes set up, it is looking for this data and it doesn't exist yet.
-    // include: [
-    //   {
-    //     model: Bug,
-    //     attributes: ["id", "language", "question", "image_file", "created_at"],
-    //   },
-    //   {
-    //     model: Comment,
-    //     attributes: ["id", "comment_text", "created_at"],
-    //     include: {
-    //       model: Bug,
-    //       attributes: ["question"],
-    //     },
-    //   },
-    //   {
-    //     model: Bug,
-    //     attributes: ["question"],
-    //     through: Upvote,
-    //     as: "upvoted_bugs",
-    //   },
-    // ],
+    include: [
+      {
+        model: Bug,
+        attributes: ["id", "language", "question", "image_file", "created_at"],
+      },
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "created_at"],
+        include: {
+          model: Bug,
+          attributes: ["question"],
+        },
+      },
+      {
+        model: Bug,
+        attributes: ["question"],
+        through: Upvote,
+        as: "upvoted_bugs",
+      },
+    ],
   })
     .then((dbUserData) => {
       if (!dbUserData) {
