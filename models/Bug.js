@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 
 class Bug extends Model {
     static upvote(body, models) {
-        return models.Vote.create({
+        return models.Upvote.create({
           user_id: body.user_id,
           bug_id: body.bug_id
         }).then(() => {

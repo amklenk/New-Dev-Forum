@@ -23,7 +23,7 @@ User.hasMany(Bug, {
     foreignKey: 'post_id'
   });
   
-  Vote.belongsTo(User, {
+  Upvote.belongsTo(User, {
     foreignKey: 'user_id'
   });
   
