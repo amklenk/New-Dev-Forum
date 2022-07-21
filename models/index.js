@@ -13,17 +13,17 @@ User.hasMany(Bug, {
   
   User.belongsToMany(Bug, {
     through: Upvote,
-    as: 'upvoted_posts',
+    as: 'upvoted_bugs',
     foreignKey: 'user_id'
   });
   
   Bug.belongsToMany(User, {
     through: Upvote,
-    as: 'upvoted_posts',
-    foreignKey: 'post_id'
+    as: 'upvoted_bugs',
+    foreignKey: 'bug_id'
   });
   
-  Vote.belongsTo(User, {
+  Upvote.belongsTo(User, {
     foreignKey: 'user_id'
   });
   
@@ -35,7 +35,7 @@ User.hasMany(Bug, {
     foreignKey: 'user_id'
   });
   
-  Post.hasMany(Upvote, {
+  Bug.hasMany(Upvote, {
     foreignKey: 'bug_id'
   });
   
@@ -43,8 +43,8 @@ User.hasMany(Bug, {
     foreignKey: 'user_id'
   });
   
-  Comment.belongsTo(Post, {
-    foreignKey: 'post_id'
+  Comment.belongsTo(Bug, {
+    foreignKey: 'bug_id'
   });
   
   User.hasMany(Comment, {
