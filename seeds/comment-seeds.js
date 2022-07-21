@@ -3,7 +3,7 @@ const { Comment } = require("../models");
 const commentData = [
   {
     comment_text:
-      "I think your last function is missing a closing curly brace.",
+      "That means you are missing a curly brace somewhere else. Try line 177!",
     user_id: 4,
     bug_id: 1,
   },
@@ -53,7 +53,7 @@ const commentData = [
   },
   {
     comment_text:
-      "Inside a function, the value of this depends on how the function is called. It retains the this value of the enclosing lexical context",
+      "Inside a function, the value of this depends on how the function is called. It retains the this value of the enclosing lexical context.",
     user_id: 2,
     bug_id: 6,
   },
