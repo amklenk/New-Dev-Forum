@@ -76,7 +76,6 @@ router.post("/", (req, res) => {
   });
 });
 
-
 //after connection with front end, we can build these out
 //login
 router.post("/login", (req, res) => {

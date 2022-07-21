@@ -3,6 +3,10 @@ const sequelize = require('../../config/connection');
 //this is an authorizing helper
 // const withAuth = require('../../utils/auth');
 const { User, Bug, Comment, Upvote } = require('../../models');
+const multer = require('multer');
+const cloudinary = require('cloudinary');
+
+const upload = multer();
 
 //get all
 //api/bugs
@@ -99,6 +103,12 @@ router.get('/:id', (req, res) => {
 //POST api/bugs
 //expects {'language': 'JavaScript', 'question': 'I can't get my event listener to work. Nothing happens when I click the button on the deployed site.', 'image_file': 'bug10.png', 'user_id': 1}
 router.post('/', (req, res) => {
+    // upload.single("bug_photo") goes as parameter
+    // console.log(req.file);
+    // const base64File = req.file.buffer.toString('base64');
+    // cloudinary.v2.uploader.upload(`data:${req.file.mimetype};base64,${base64File}`,
+    // function(error, result) {console.log(result, error)});
+
     Bug.create({
         language: req.body.language,
         question: req.body.question,
@@ -110,6 +120,7 @@ router.post('/', (req, res) => {
         console.log(err);
         res.status(500).json(err);
     });
+    res.send("okay");
 });
 
 //upvote a bug
