@@ -1,4 +1,4 @@
-const router = require("express").router();
+const router = require("express").Router();
 const req = require("express/lib/request");
 const sequelize = require("../config/connection");
 

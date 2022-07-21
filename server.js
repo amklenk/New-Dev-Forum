@@ -1,4 +1,3 @@
-//require
 const path = require("path");
 const express = require("express");
 const session = require("express-session");
@@ -25,8 +24,9 @@ const sess = {
 
 app.use(session(sess));
 
-const helpers = require("./utils/helpers");
-const hbs = exphbs.create({ helpers });
+// const helpers = require("./utils/helpers");
+//add back in helpers to create
+const hbs = exphbs.create({ });
 
 //middleware
 app.engine("handlebars", hbs.engine);

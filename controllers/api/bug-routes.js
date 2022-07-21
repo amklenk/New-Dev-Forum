@@ -14,14 +14,14 @@ router.get('/:id', (req, res) => {});
 
 //post a new bug
 //POST api/bugs
-router.post('/', withAuth, (req, res) => {});
+router.post('/', (req, res) => {});
 
 //upvote a bug
 //PUT api/bugs/upvote
-router.put('/upvote', withAuth, (req, res) => {});
+router.put('/upvote', (req, res) => {});
 
 //update a bug
-router.put('/:id', withAuth, (req, res) => {});
+router.put('/:id',(req, res) => {});
 
 //do we want delete?
 

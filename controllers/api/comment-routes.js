@@ -10,7 +10,7 @@ router.get('/', (req, res) => {});
 
 //post a comment for a bug
 //POST api/comments
-router.post('/', withAuth, (req, res) => {});
+router.post('/', (req, res) => {});
 
 //do we want to delete?
 
