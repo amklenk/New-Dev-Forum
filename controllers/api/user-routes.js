@@ -76,7 +76,6 @@ router.post("/", (req, res) => {
   });
 });
 
-
 //after connection with front end, we can build these out
 //login
 router.post("/login", (req, res) => {
@@ -111,7 +110,6 @@ router.post('/logout', (req, res) => {
     }
 });
 
-//Do we want to update or delete a user?
 //updates a user
 //PUT /api/users/id#
 // expects following format {'username': 'Lernantino', 'email': 'lernantino@gmail.com', 'password': 'password1234'}
