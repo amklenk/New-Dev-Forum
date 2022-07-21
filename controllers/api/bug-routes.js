@@ -114,6 +114,7 @@ router.post('/', (req, res) => {
 
 //upvote a bug
 //PUT api/bugs/upvote
+//expects {'user_id': 3, 'bug_id': 7}
 router.put('/upvote', (req, res) => {
   if (req.session) {
     Bug.upvote({ ...req.body, user_id: req.session.user_id},
@@ -159,7 +160,7 @@ router.delete('/:id', (req, res) => {
         }
     })
     .then(dbBugData => {
-        if(!dbPostData){
+        if(!dbBugData){
             res.status(404).json({ message: 'No bug found with this id' });
             return;
         }
