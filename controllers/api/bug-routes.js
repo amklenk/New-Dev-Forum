@@ -3,10 +3,10 @@ const sequelize = require('../../config/connection');
 //this is an authorizing helper
 // const withAuth = require('../../utils/auth');
 const { User, Bug, Comment, Upvote } = require('../../models');
-const multer = require('multer');
-const cloudinary = require('cloudinary');
+// const multer = require('multer');
+// const cloudinary = require('cloudinary');
 
-const upload = multer();
+// const upload = multer();
 
 //get all
 //api/bugs
