@@ -25,7 +25,9 @@ router.get('/', (req, res) => {
         'upvote_count',
       ],
     ],
-    order: [['created_at', 'DESC']],
+    order: [[sequelize.literal(
+        '(SELECT COUNT(*) FROM upvote WHERE bug.id = upvote.bug_id)'
+      ), 'DESC']],
     include: [
       {
         model: Comment,
