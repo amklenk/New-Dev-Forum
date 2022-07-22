@@ -1,7 +1,7 @@
 const path = require("path");
 const express = require("express");
 const session = require("express-session");
-const cloudinary = require("cloudinary");
+// const cloudinary = require("cloudinary");
 
 const routes = require("./controllers");
 const exphbs = require("express-handlebars");
@@ -25,7 +25,6 @@ const sess = {
 
 app.use(session(sess));
 
-
 // const helpers = require("./utils/helpers");
 //add back in helpers to create
 const hbs = exphbs.create({});
@@ -38,11 +37,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-cloudinary.config({
-  cloud_name: "dmi2apwss",
-  api_key: "268162835632466",
-  api_secret: "fiCj_M1wehLsGJ_74-atlfaI6mc",
-});
+// cloudinary.config({
+//   cloud_name: "dmi2apwss",
+//   api_key: "268162835632466",
+//   api_secret: "fiCj_M1wehLsGJ_74-atlfaI6mc",
+// });
 
 //turns on routes
 app.use(routes);
