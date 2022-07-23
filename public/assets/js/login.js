@@ -3,7 +3,7 @@ function loginHandler(event) {
     const email = document.querySelector("#email").value.trim();
     const password = document.querySelector("#password").value.trim();
     if(email && password){
-        const response = await fetch("/assets/login", {
+        const response = await fetch("/api/users/login", {
             method: 'post',
             body: JSON.stringify({
                 email,
@@ -13,7 +13,7 @@ function loginHandler(event) {
         });
 
         if(response.ok){
-            document.location.replace('/index.html')
+            document.location.replace('/')
         } else{
             alert(response.statusText);
         }
@@ -47,7 +47,7 @@ async function registerHandler(event) {
 }
 
 document
-  .querySelector(".needs-validation")
+  .querySelector(".loginButton")
   .addEventListener("submit", loginHandler);
 
 document
