@@ -1,7 +1,8 @@
 const path = require("path");
 const express = require("express");
 const session = require("express-session");
-// const cloudinary = require("cloudinary");
+const cloudinary = require("cloudinary");
+require("dotenv").config();
 
 const routes = require("./controllers");
 const exphbs = require("express-handlebars");
@@ -38,11 +39,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-// cloudinary.config({
-//   cloud_name: "dmi2apwss",
-//   api_key: "268162835632466",
-//   api_secret: "fiCj_M1wehLsGJ_74-atlfaI6mc",
-// });
+cloudinary.config({
+  cloud_name: process.env.cloud_name,
+  api_key: process.env.api_key,
+  api_secret: process.env.api_secret,
+});
 
 //turns on routes
 app.use(routes);
