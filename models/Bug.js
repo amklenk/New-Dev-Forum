@@ -44,7 +44,7 @@ Bug.init({
         primaryKey: true,
         autoIncrement: true
       },
-    langauge: {
+    language: {
         type: DataTypes.STRING,
         allowNull: false
       },
