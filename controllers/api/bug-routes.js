@@ -3,7 +3,7 @@ const sequelize = require("../../config/connection");
 //this is an authorizing helper
 // const withAuth = require('../../utils/auth');
 const { User, Bug, Comment, Upvote } = require("../../models");
-// const multer = require("multer");
+// const multer = require('multer');
 // const cloudinary = require('cloudinary');
 
 // const upload = multer();
@@ -25,7 +25,14 @@ router.get("/", (req, res) => {
         "upvote_count",
       ],
     ],
-    order: [["created_at", "DESC"]],
+    order: [
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM upvote WHERE bug.id = upvote.bug_id)"
+        ),
+        "DESC",
+      ],
+    ],
     include: [
       {
         model: Comment,
@@ -100,12 +107,22 @@ router.get("/:id", (req, res) => {
 //post a new bug
 //POST api/bugs
 //expects {'language': 'JavaScript', 'question': 'I can't get my event listener to work. Nothing happens when I click the button on the deployed site.', 'image_file': 'bug10.png', 'user_id': 1}
+
 router.post("/", (req, res) => {
-  // upload.single("bug_photo") goes as parameter
-  // console.log(req.file);
-  // const base64File = req.file.buffer.toString('base64');
-  // cloudinary.v2.uploader.upload(`data:${req.file.mimetype};base64,${base64File}`,
-  // function(error, result) {console.log(result, error)});
+  //upload.single("bug_photo"), parameter
+  // let photoUrl;
+  // const { file: { buffer, mimetype } } = req
+  // const allowedFileTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
+  // if(allowedFileTypes.includes(mimetype)) {
+  //   const base64File = buffer.toString('base64');
+  //   cloudinary.v2.uploader.upload(`data:${mimetype};base64,${base64File}`,
+  //     function(error, result) {
+  //     console.log(result, error)
+  //     photoUrl = result.url;
+  //     return photoUrl;
+  //   });
+
+  // console.log(photoUrl);
 
   Bug.create({
     language: req.body.language,
@@ -118,7 +135,8 @@ router.post("/", (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
-  res.send("okay");
+  // res.send("okay");
+  // console.log(res);
 });
 
 //upvote a bug
