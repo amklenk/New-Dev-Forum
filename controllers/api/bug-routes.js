@@ -3,10 +3,11 @@ const sequelize = require("../../config/connection");
 //this is an authorizing helper
 // const withAuth = require('../../utils/auth');
 const { User, Bug, Comment, Upvote } = require("../../models");
-// const multer = require('multer');
-// const cloudinary = require('cloudinary');
+const multer = require('multer');
+const cloudinary = require('cloudinary');
 
-// const upload = multer();
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 //get all
 //api/bugs
@@ -107,8 +108,8 @@ router.get("/:id", (req, res) => {
 //post a new bug
 //POST api/bugs
 //expects {'language': 'JavaScript', 'question': 'I can't get my event listener to work. Nothing happens when I click the button on the deployed site.', 'image_file': 'bug10.png', 'user_id': 1}
-
-router.post("/", upload.single("bug_photo"), (req, res) => {
+router.post("/", upload.single("bug_photo"), async (req, res) => {
+let image;
   const {
     file: { buffer, mimetype },
   } = req;
@@ -120,25 +121,60 @@ router.post("/", upload.single("bug_photo"), (req, res) => {
   ];
   if (allowedFileTypes.includes(mimetype)) {
     const base64File = buffer.toString("base64");
-    cloudinary.v2.uploader.upload(
+    image = await cloudinary.v2.uploader.upload(
       `data:${mimetype};base64,${base64File}`,
       function (error, result) {
         console.log(result, error);
-        Bug.create({
-          language: req.body.language,
-          question: req.body.question,
-          image_file: result.url,
-          user_id: req.session.user_id,
-        })
-          .then((dbBugData) => res.json(dbBugData))
-          .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-          });
       }
     );
+  } else {
+    res.status(404).json({ message: 'Filetype not accepted' })
   }
+
+  if(image){
+      try {
+        console.log(JSON.stringify(
+            {language: req.body.language,
+              question: req.body.question,
+              image_file: image.url,
+              user_id: req.body.user_id,}
+        ))
+        await Bug.create({
+              language: req.body.language,
+              question: req.body.question,
+              image_file: image.url,
+              user_id: req.session.user_id,
+            })
+        return res.status(201).json('Bug ticket created')
+      } catch (error) {
+        throw error;
+      }
+  } else {
+    res.status(500).json({ message: 'Image did not upload properly' });
+  }
+
 });
+
+// router.post('/',  async (req, res) => {
+//     const image =  await imagePost(req, res);
+//     if(image){
+//         const imageUrl = image.result.url;
+//         Bug.create({
+//           language: req.body.language,
+//           question: req.body.question,
+//           image_file: imageUrl,
+//           user_id: req.session.user_id,
+//         })
+//           .then((dbBugData) => res.json(dbBugData))
+//           .catch((err) => {
+//             console.log(err);
+//             res.status(500).json(err);
+//           });
+//     } else {
+//         res.status(404).json({ message: 'Image failed to upload' });
+//     }
+    
+// });
 
 //upvote a bug
 //PUT api/bugs/upvote
