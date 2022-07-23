@@ -108,35 +108,36 @@ router.get("/:id", (req, res) => {
 //POST api/bugs
 //expects {'language': 'JavaScript', 'question': 'I can't get my event listener to work. Nothing happens when I click the button on the deployed site.', 'image_file': 'bug10.png', 'user_id': 1}
 
-router.post("/", (req, res) => {
-  //upload.single("bug_photo"), parameter
-  // let photoUrl;
-  // const { file: { buffer, mimetype } } = req
-  // const allowedFileTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
-  // if(allowedFileTypes.includes(mimetype)) {
-  //   const base64File = buffer.toString('base64');
-  //   cloudinary.v2.uploader.upload(`data:${mimetype};base64,${base64File}`,
-  //     function(error, result) {
-  //     console.log(result, error)
-  //     photoUrl = result.url;
-  //     return photoUrl;
-  //   });
-
-  // console.log(photoUrl);
-
-  Bug.create({
-    language: req.body.language,
-    question: req.body.question,
-    image_file: req.body.image_file,
-    user_id: req.session.user_id,
-  })
-    .then((dbBugData) => res.json(dbBugData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-  // res.send("okay");
-  // console.log(res);
+router.post("/", upload.single("bug_photo"), (req, res) => {
+  const {
+    file: { buffer, mimetype },
+  } = req;
+  const allowedFileTypes = [
+    "image/png",
+    "image/jpg",
+    "image/jpeg",
+    "image/gif",
+  ];
+  if (allowedFileTypes.includes(mimetype)) {
+    const base64File = buffer.toString("base64");
+    cloudinary.v2.uploader.upload(
+      `data:${mimetype};base64,${base64File}`,
+      function (error, result) {
+        console.log(result, error);
+        Bug.create({
+          language: req.body.language,
+          question: req.body.question,
+          image_file: result.url,
+          user_id: req.session.user_id,
+        })
+          .then((dbBugData) => res.json(dbBugData))
+          .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+          });
+      }
+    );
+  }
 });
 
 //upvote a bug
