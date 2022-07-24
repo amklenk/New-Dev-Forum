@@ -61,7 +61,7 @@ const bugData = [
     question:
       "I wanted to check whether the variable is defined or not. For example, the following throws a not defined error. How can I catch this error?",
     image_file:
-      "bhttps://res.cloudinary.com/dmi2apwss/image/upload/v1658522373/bug8_cd42rg.png",
+      "https://res.cloudinary.com/dmi2apwss/image/upload/v1658522373/bug8_cd42rg.png",
     user_id: 4,
   },
 ];
