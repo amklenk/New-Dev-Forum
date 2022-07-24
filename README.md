@@ -5,4 +5,3 @@ This application is a collaborative project using front-end and back-end technol
 
 DB_LOCAL_HOST='127.0.0.1'
 
-
