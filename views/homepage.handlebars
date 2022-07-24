@@ -1,45 +1,42 @@
-    <!-- Page header with logo and tagline-->
-    <main class="py-5 bg-light border-bottom mb-4">
-      <div class="container">
-        <div class="text-center my-5">
-          <h1 class="fw-bolder">Welcome to Bug Bash!</h1>
-          <p class="lead mb-0">We're buggin' out so you don't have to.</p>
-        </div>
-      </div>
+<!-- Page header with logo and tagline-->
+<main class="py-5 bg-light border-bottom mb-4">
+  <div class="container">
+    <div class="text-center my-5">
+      <h1 class="fw-bolder">Welcome to Bug Bash!</h1>
+      <p class="lead mb-0">We're buggin' out so you don't have to.</p>
     </div>
-    <!-- Page content-->
-    <div class="container">
-      <div class="row">
-        <!-- Bug entries-->
-        <div class="col-lg-8">
-          <!-- Nested row for non-featured bug posts-->
-          <div class="row">
-            <div class="col-lg-6">
-              <!-- bug post-->
-
-              <div class="card mb-4">
-                <a href="#!"><img class="card-img-top" src="{{image_file}}" alt="..." /></a>
-                <div class="card-body">
+  </div>
+  </div>
+  <!-- Page content-->
+  <div class="container">
+    <div class="row">
+      <!-- Bug entries-->
+      <div class="col-lg-8">
+        <!-- Nested row for non-featured bug posts-->
+        <div class="row">
+          <div class="col-lg-6">
+            <!-- bug post-->
+            {{#each bugs}}
+            <div class="card mb-4">
+              <a href="#!"><img class="card-img-top" src="{{image_file}}" alt="..." /></a>
+              <div class="card-body">
                 <div class="small text-muted">{{created_at}}</div>
-                 <h2 class="card-title h4">{{language}}</h2>
-                  <p class="card-text">
+                <h2 class="card-title h4">{{language}}</h2>
+                <p class="card-text">
                   {{question}}
-                    </p>
-                    <a class="btn btn-primary" href="/seebug{{bug_id}}">See comments</a>
-                      <button class="btn upvote">:top: {{upvote_count}}</button>
+                </p>
+                <a class="btn btn-primary" href="/seebug{{bug_id}}">See comments</a>
+                <button class="btn upvote">:top: {{upvote_count}}</button>
+              </div>
             </div>
-            </div>
+            {{/each}}
+          </div>
           <!-- Pagination-->
           <nav aria-label="Pagination">
             <hr class="my-0" />
             <ul class="pagination justify-content-center my-4">
               <li class="page-item disabled">
-                <a
-                  class="page-link"
-                  href="#"
-                  tabindex="-1"
-                  aria-disabled="true"
-                >Newer</a>
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a>
               </li>
               <li class="page-item active" aria-current="page">
                 <a class="page-link" href="#!">1</a>
@@ -63,18 +60,9 @@
             <div class="card-header">Search 🐞</div>
             <div class="card-body">
               <div class="input-group">
-                <input
-                  class="form-control"
-                  type="text"
-                  placeholder="Enter search term..."
-                  aria-label="Enter search term..."
-                  aria-describedby="button-search"
-                />
-                <button
-                  class="btn btn-primary"
-                  id="button-search"
-                  type="button"
-                >
+                <input class="form-control" type="text" placeholder="Enter search term..."
+                  aria-label="Enter search term..." aria-describedby="button-search" />
+                <button class="btn btn-primary" id="button-search" type="button">
                   Go!
                 </button>
               </div>
@@ -104,4 +92,4 @@
           </div>
         </div>
       </div>
-    </main> 
+</main>

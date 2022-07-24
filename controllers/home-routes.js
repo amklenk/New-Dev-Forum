@@ -1,10 +1,19 @@
-const sequelize = require("sequelize");
-const { Bug, Comment, Upvote, User } = require("../models");
 const router = require("express").Router();
+const sequelize = require("../config/connection");
+const { User, Bug, Comment, Upvote } = require("../models");
 
 // get all posts for home page
 router.get("/", (req, res) => {
   console.log("<<<<<<<<>>>>>>>>");
+  // res.render('homepage', {
+  //   id: 1,
+  //   language: "JavaScript",
+  //   question:
+  //     "The problems log says I am missing a curly brace where I don't need one. Help!",
+  //   image_file:
+  //     "https://res.cloudinary.com/dmi2apwss/image/upload/v1658522393/bug1_bohtwd.png",
+  //   user_id: 1,
+  // });
   Bug.findAll({
     attributes: [
       "id",
@@ -43,9 +52,9 @@ router.get("/", (req, res) => {
     ],
   })
     .then((dbBugData) => {
-      const bug = dbBugData.map((bug) => bug.get({ plain: true }));
-
-      res.render("homepage", dbBugData[0]);
+      console.log(dbBugData[0]);
+      const bugs = dbBugData.map((bugs) => bugs.get({ plain: true }));
+      res.render("homepage", { bugs });
     })
     .catch((err) => {
       console.log(err);
