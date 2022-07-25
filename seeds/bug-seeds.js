@@ -49,7 +49,7 @@ const bugData = [
     user_id: 3,
   },
   {
-    language: "Node.js 🐞",
+    language: "Express.js",
     question:
       "I keep running my test and it will not pass, can someone see what I'm doing wrong?",
     image_file:
