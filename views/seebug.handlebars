@@ -84,58 +84,16 @@
                 <h2 class="text-center"><strong>See comments</strong></h2>
 
                 <!-- Comment -->
-                <div class="row mb-4">
-                  <div class="col-10">
-                    <p class="mb-2"><strong>Andrew Towers</strong></p>
+                <div class="comments row mb-4">
+                  {{#each this}}
+                  <div class="comment col-10">
+                    <p class="mb-2"><strong>{{bug_id}}</strong></p>
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Distinctio est ab iure inventore dolorum consectetur?
-                      Molestiae aperiam atque quasi consequatur aut? Repellendus
-                      alias dolor ad nam, soluta distinctio quis accusantium!
+                      {{comment_text}}
                     </p>
                   </div>
+                  {{/each}}
                 </div>
-
-                <!-- Comment -->
-                <div class="row mb-4">
-                  <div class="col-10">
-                    <p class="mb-2"><strong>Amanda Klenk</strong></p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Distinctio est ab iure inventore dolorum consectetur?
-                      Molestiae aperiam atque quasi consequatur aut? Repellendus
-                      alias dolor ad nam, soluta distinctio quis accusantium!
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Comment -->
-                <div class="row mb-4">
-                  <div class="col-10">
-                    <p class="mb-2"><strong>Alex Dale</strong></p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Distinctio est ab iure inventore dolorum consectetur?
-                      Molestiae aperiam atque quasi consequatur aut? Repellendus
-                      alias dolor ad nam, soluta distinctio quis accusantium!
-                    </p>
-                  </div>
-                </div>
-              </section>
-
-                   <!-- Comment -->
-                   <div class="row mb-4">
-                    <div class="col-10">
-                      <p class="mb-2"><strong>Jack Nowaczewski</strong></p>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Distinctio est ab iure inventore dolorum consectetur?
-                        Molestiae aperiam atque quasi consequatur aut? Repellendus
-                        alias dolor ad nam, soluta distinctio quis accusantium!
-                      </p>
-                    </div>
-                  </div>
-                </section>
 
               <!--Section: Reply-->
               <section>
@@ -166,7 +124,7 @@
 
                   <!-- Message input -->
                   <div class="form-outline mb-4">
-                    <textarea
+                    <textarea name="comment-body"
                       class="form-control"
                       id="form4Example3"
                       rows="4"
@@ -175,7 +133,7 @@
                   </div>
 
                   <!-- Submit button -->
-                  <button type="submit" class="btn btn-primary btn-block mb-4">
+                  <button id="comment" type="submit" class="btn btn-primary btn-block mb-4">
                     Add Comment
                   </button>
                 </form>
