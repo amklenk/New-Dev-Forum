@@ -2,7 +2,7 @@ const { Bug } = require("../models");
 
 const bugData = [
   {
-    language: "JavaScript",
+    language: "JavaScript 🐝",
     question:
       "The problems log says I am missing a curly brace where I don't need one. Help!",
     image_file:
@@ -10,14 +10,14 @@ const bugData = [
     user_id: 1,
   },
   {
-    language: "CSS",
+    language: "CSS 🐛",
     question: "I really want to center this div. Any ideas?",
     image_file:
       "https://res.cloudinary.com/dmi2apwss/image/upload/v1658522373/how-to-center-a-button-in-css1_tbv8ef.png",
     user_id: 1,
   },
   {
-    language: "Node.js",
+    language: "Node.js 🐞",
     question:
       "Are there any good resources to get started with Node.JS? Any good tutorials, blogs or books?",
     image_file:
@@ -25,7 +25,7 @@ const bugData = [
     user_id: 2,
   },
   {
-    language: "HTML",
+    language: "HTML 🦋",
     question:
       "Can someone look at my HTML? It isn't rendering properly on my landing page",
     image_file:
@@ -41,7 +41,7 @@ const bugData = [
     user_id: 3,
   },
   {
-    language: "JavaScript",
+    language: "JavaScript 🐝",
     question:
       "What in the heck is .this and why is it giving me such a hard time?",
     image_file:
@@ -49,7 +49,7 @@ const bugData = [
     user_id: 3,
   },
   {
-    language: "Express.js",
+    language: "Node.js 🐞",
     question:
       "I keep running my test and it will not pass, can someone see what I'm doing wrong?",
     image_file:
@@ -57,7 +57,7 @@ const bugData = [
     user_id: 4,
   },
   {
-    language: "Javascript",
+    language: "Javascript 🐝",
     question:
       "I wanted to check whether the variable is defined or not. For example, the following throws a not defined error. How can I catch this error?",
     image_file:
