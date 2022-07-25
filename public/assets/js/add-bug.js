@@ -8,9 +8,9 @@ async function bugClickHandler(event) {
   const bug_photo = document.querySelector('input[type=file]').files[0];
   const question = document.querySelector('#exampleFormControlTextarea1').value;
 
-  formData.append(language);
-  formData.append(bug_photo);
-  formData.append(question);
+  formData.append('language', language);
+  formData.append('bug_photo', bug_photo);
+  formData.append('question', question);
 
   const response = await fetch(`/api/bugs`, {
     method: 'POST',
