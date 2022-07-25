@@ -1,26 +1,27 @@
-async function bugSubmitHandler(event) {
+async function bugClickHandler(event) {
+  console.log("click!");
   event.preventDefault();
 
-  const language = document.querySelector('input[name="post-title"]').value;
-  const bug_photo = document.querySelector('input[name="post-url"]').value;
-  const question = document.querySelector('input[name="post-url"]').value;
+  const formData = new FormData();
 
-  const response = await fetch(`/api/posts`, {
+  const language = document.querySelector('#exampleFormControlSelect1').value;
+  const bug_photo = document.querySelector('input[type=file]').files[0];
+  const question = document.querySelector('#exampleFormControlTextarea1').value;
+
+  formData.append(language);
+  formData.append(bug_photo);
+  formData.append(question);
+
+  const response = await fetch(`/api/bugs`, {
     method: 'POST',
-    body: JSON.stringify({
-      language,
-      question
-    }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
+    body: formData,
   });
 
   if (response.ok) {
-    document.location.replace('/dashboard');
+    document.location.replace('/');
   } else {
     alert(response.statusText);
   }
 }
 
-document.querySelector('#submit').addEventListener('submit', bugSubmitHandler);
+document.querySelector('#submit').addEventListener('click', bugClickHandler);
