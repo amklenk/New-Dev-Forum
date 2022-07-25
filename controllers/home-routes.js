@@ -83,7 +83,6 @@ router.get('/bug/:id', (req, res) => {
         "upvote_count",
       ],
     ],
-    order: [["created_at", "DESC"]],
     include: [
       {
         model: Comment,
@@ -99,25 +98,18 @@ router.get('/bug/:id', (req, res) => {
       },
     ],
   })
-    .then(dbBugData => {
-      if (!dbBugData) {
+  .then((dbBugData) => {
+    if (!dbBugData) {
         res.status(404).json({ message: 'No bug found with this id' });
         return;
-      }
-
-      // serialize the data
-      const bug = dbBugData.get({ plain: true });
-
-      // pass data to template
-      //need to put ifLogged in!
-      res.render('seebug', { bug
-      // ,loggedIn: req.session.loggedIn
-      });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+    }
+    const bug = dbBugData.get({ plain: true });
+    res.render('seebug', { bug });
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 
