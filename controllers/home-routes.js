@@ -68,8 +68,9 @@ router.get("/register", (req, res) => {
   res.render("register");
 });
 
-router.get("/addbug", (req, res) => {
-  res.render("addbug");
+router.get("/addbug", withAuth, (req, res) => {
+//something abotu req.session.loggedIn or whatever
+    res.render("addbug");
 });
 
 //renders a single bug when comment button is clicked
