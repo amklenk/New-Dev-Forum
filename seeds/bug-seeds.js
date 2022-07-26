@@ -33,7 +33,7 @@ const bugData = [
     user_id: 2,
   },
   {
-    language: "GIT",
+    language: "Other",
     question:
       "I want to open a directory in VScode, is there a special command for that?",
     image_file:
@@ -49,7 +49,7 @@ const bugData = [
     user_id: 3,
   },
   {
-    language: "Express.js",
+    language: "Express.js 🐜",
     question:
       "I keep running my test and it will not pass, can someone see what I'm doing wrong?",
     image_file:

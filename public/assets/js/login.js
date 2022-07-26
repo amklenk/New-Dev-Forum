@@ -1,33 +1,34 @@
-function loginHandler(event) {
+async function loginHandler(event) {
     event.preventDefault();
     const email = document.querySelector("#email").value.trim();
     const password = document.querySelector("#password").value.trim();
-    if(email && password){
-        const response = await fetch("/api/users/login", {
+    console.log(email);
+    console.log(password);
+
+    if (email && password) {
+        const response = await fetch('/api/users/login', {
             method: 'post',
             body: JSON.stringify({
                 email,
                 password
             }),
-            headers: {"Content-Type": "application.json"}
+            headers: { 'Content-Type': 'application/json' }
         });
 
-        if(response.ok){
-            document.location.replace('/')
-        } else{
+        if (response.ok) {
+            document.location.replace('/');
+        } else {
             alert(response.statusText);
         }
-        console.log(">>>>RESPONSE<<<<<",response)
     }
-    console.log(">>>>RESPONSE<<<<<", response);
   }
 
 
 async function registerHandler(event) {
   event.preventDefault();
-  const username = document.querySelector("").value.trim();
-  const email = document.querySelector("").value.trim();
-  const password = document.querySelector("").value.trim();
+  const username = document.querySelector(".register-name").value.trim();
+  const email = document.querySelector(".register-email").value.trim();
+  const password = document.querySelector(".register-password").value.trim();
 
   if (username && email && password) {
     const response = await fetch("./api/users", {
@@ -39,7 +40,7 @@ async function registerHandler(event) {
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
-      document.location.replace("/index/");
+      document.location.replace("/");
     } else {
       alert(response.statusText);
     }
@@ -47,9 +48,14 @@ async function registerHandler(event) {
 }
 
 document
-  .querySelector(".loginButton")
-  .addEventListener("submit", loginHandler);
+  .querySelector(".login-button")
+  .addEventListener("click", loginHandler);
 
 document
-  .querySelector(".needs-validation")
+  .querySelector(".register-button")
   .addEventListener("submit", registerHandler);
+
+var test = document.querySelector(".login-button")
+test.onclick = function () { 
+  console.log("LOGIN BUTTON CLICKED!!!!!!!!!!!!!");
+}
