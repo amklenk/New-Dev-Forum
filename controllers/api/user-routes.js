@@ -88,7 +88,13 @@ router.post("/login", (req, res) => {
       res.status(400).json({ message: "No user with that email address" });
       return;
     }
-    //this is so that express-session knows who is logged in and can start the session for them
+    const validPassword = dbUserData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res.status(400).json({ message: 'Incorrect password!' });
+      return;
+    }
+
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
