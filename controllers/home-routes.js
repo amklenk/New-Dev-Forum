@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
+const withAuth = require('../utils/withAuth');
 const { User, Bug, Comment, Upvote } = require("../models");
 
 // get all bugs for home page
@@ -45,10 +46,7 @@ router.get("/", (req, res) => {
     .then((dbBugData) => {
       console.log(dbBugData[0]);
       const bugs = dbBugData.map((bugs) => bugs.get({ plain: true }));
-      res.render("homepage", {
-        bugs,
-        // ,loggedIn: req.session.loggedIn
-      });
+      res.render("homepage", { bugs, loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.log(err);
@@ -75,7 +73,7 @@ router.get("/addbug", (req, res) => {
 });
 
 //renders a single bug when comment button is clicked
-router.get("/bug/:id", (req, res) => {
+router.get("/bug/:id", withAuth, (req, res) => {
   Bug.findOne({
     where: {
       id: req.params.id,
@@ -114,7 +112,60 @@ router.get("/bug/:id", (req, res) => {
         return;
       }
       const bug = dbBugData.get({ plain: true });
-      res.render("seebug", { bug });
+      res.render("seebug", { bug, loggedIn: req.session.loggedIn });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get("/language/:language", withAuth, (req, res) => {
+  console.log("<<<<<<<<>>>>>>>>");
+  Bug.findAll({
+    where: {
+      language: req.params.language,
+    },
+    attributes: [
+      "id",
+      "language",
+      "question",
+      "image_file",
+      "created_at",
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM upvote WHERE bug.id = upvote.bug_id)"
+        ),
+        "upvote_count",
+      ],
+    ],
+    order: [
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM upvote WHERE bug.id = upvote.bug_id)"
+        ),
+        "DESC",
+      ],
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "bug_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
+  })
+    .then((dbBugData) => {
+      console.log(dbBugData[0]);
+      const bugs = dbBugData.map((bugs) => bugs.get({ plain: true }));
+      res.render("seelanguage", { bugs, loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.log(err);

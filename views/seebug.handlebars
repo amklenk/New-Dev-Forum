@@ -13,7 +13,9 @@
               <div class="col-lg-6 text-center text-lg-start mb-3 m-lg-0">
                 <span> Published <u>{{bug.created_at}}</u> by</span>
                 <a href="" class="text-dark">{{bug.user.username}}</a>
+                {{#if loggedIn}}
                 <button class="btn upvote"> 🔝{{bug.upvote_count}}</button>
+                {{/if}}
               </div>
             </div>
           </section>
@@ -25,22 +27,6 @@
             </p>
           </section>
 
-          <!--Section: Author-->
-          <section class="border-bottom mb-4 pb-4">
-            <div class="row">
-              <div class="col-9">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Distinctio est ab iure inventore dolorum consectetur?
-                  Molestiae aperiam atque quasi consequatur aut? Repellendus
-                  alias dolor ad nam, soluta distinctio quis accusantium!
-                </p>
-              </div>
-            </div>
-          </section>
-          <!--Section: Author-->
-
-          
           <!--Section: Comments-->
           <section class="border-bottom mb-3">
             <h2 class="text-center"><strong>See comments</strong></h2>
@@ -60,10 +46,11 @@
             </div>
 
             <!--Section: Reply-->
+            {{#if loggedIn}}
             <section>
               <h2 class="text-center"><strong>Leave a comment</strong></h2>
 
-              <form>
+              {{!-- <form>
                 <!-- Name input -->
                 <div class="form-outline mb-4">
                   <input type="text" id="form4Example1" class="form-control" />
@@ -74,7 +61,7 @@
                 <div class="form-outline mb-4">
                   <input type="email" id="form4Example2" class="form-control" />
                   <label class="form-label" for="form4Example2">Email address</label>
-                </div>
+                </div> --}}
 
                 <!-- Message input -->
                 <div class="form-outline mb-4">
@@ -88,9 +75,15 @@
                 </button>
               </form>
             </section>
+            {{/if}}
             <!--Section: Reply-->
         </div>
       </div>
       <!--Grid row-->
     </div>
 </body>
+
+ {{#if loggedIn}}
+  <script src="/assets/js/comment.js"></script>
+  <script src="/assets/js/upvote.js"></script>
+  {{/if}}
