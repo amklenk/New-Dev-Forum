@@ -2,18 +2,9 @@ const router = require("express").Router();
 const sequelize = require("../config/connection");
 const { User, Bug, Comment, Upvote } = require("../models");
 
-// get all posts for home page
+// get all bugs for home page
 router.get("/", (req, res) => {
   console.log("<<<<<<<<>>>>>>>>");
-  // res.render('homepage', {
-  //   id: 1,
-  //   language: "JavaScript",
-  //   question:
-  //     "The problems log says I am missing a curly brace where I don't need one. Help!",
-  //   image_file:
-  //     "https://res.cloudinary.com/dmi2apwss/image/upload/v1658522393/bug1_bohtwd.png",
-  //   user_id: 1,
-  // });
   Bug.findAll({
     attributes: [
       "id",
@@ -54,7 +45,9 @@ router.get("/", (req, res) => {
     .then((dbBugData) => {
       console.log(dbBugData[0]);
       const bugs = dbBugData.map((bugs) => bugs.get({ plain: true }));
-      res.render("homepage", { bugs });
+      res.render("homepage", { bugs
+       // ,loggedIn: req.session.loggedIn
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -62,6 +55,7 @@ router.get("/", (req, res) => {
     });
 });
 
+//logs user in and redirects to homepage
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
@@ -70,16 +64,53 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.get("/addbug", (req, res) => {
-  res.render("addbug");
+//renders a single bug when comment button is clicked
+router.get('/bug/:id', (req, res) => {
+  Bug.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: [
+      "id",
+      "language",
+      "question",
+      "image_file",
+      "created_at",
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM upvote WHERE bug.id = upvote.bug_id)"
+        ),
+        "upvote_count",
+      ],
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "bug_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
+  })
+  .then((dbBugData) => {
+    if (!dbBugData) {
+        res.status(404).json({ message: 'No bug found with this id' });
+        return;
+    }
+    const bug = dbBugData.get({ plain: true });
+    res.render('seebug', { bug });
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
-router.get("/register", (req, res) => {
-  res.render("register");
-});
-
-router.get("/seebug", (req, res) => {
-  res.render("seebug");
-});
 
 module.exports = router;
