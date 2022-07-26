@@ -1,25 +1,26 @@
-function loginHandler(event) {
+async function loginHandler(event) {
     event.preventDefault();
-    const email = document.querySelector(".email-form").value.trim();
-    const password = document.querySelector(".password-form").value.trim();
-    if(email && password){
-        const response = await fetch("/api/users/login", {
+    const email = document.querySelector("#email").value.trim();
+    const password = document.querySelector("#password").value.trim();
+    console.log(email);
+    console.log(password);
+
+    if (email && password) {
+        const response = await fetch('/api/users/login', {
             method: 'post',
             body: JSON.stringify({
                 email,
                 password
             }),
-            headers: {"Content-Type": "application.json"}
+            headers: { 'Content-Type': 'application/json' }
         });
 
-        if(response.ok){
-            document.location.replace('/homepage')
-        } else{
+        if (response.ok) {
+            document.location.replace('/');
+        } else {
             alert(response.statusText);
         }
-        console.log(">>>>RESPONSE<<<<<",response)
     }
-    console.log(">>>>RESPONSE<<<<<", response);
   }
 
 
@@ -39,7 +40,7 @@ async function registerHandler(event) {
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
-      document.location.replace("/homepage/");
+      document.location.replace("/");
     } else {
       alert(response.statusText);
     }
@@ -48,7 +49,7 @@ async function registerHandler(event) {
 
 document
   .querySelector(".login-button")
-  .addEventListener("submit", loginHandler);
+  .addEventListener("click", loginHandler);
 
 document
   .querySelector(".register-button")
