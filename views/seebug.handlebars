@@ -1,189 +1,96 @@
 <body>
-      <main class="bg-light">
-        <div class="container">
-          <!--Grid row-->
-          <div class="row">
-            <!--Grid column-->
-            <div class="col-md-12 mb-4">
-              <!--Section: Post data-mdb-->
-              <section class="border-bottom mb-4">
-                <img
-                  src="https://mdbootstrap.com/img/Photos/Slides/img%20(144).jpg"
-                  class="img-fluid shadow-2-strong rounded-5 mb-4"
-                  alt=""
-                />
+  <main class="bg-light">
+    <div class="container">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-md-12 mb-4">
+          <!--Section: Post data-mdb-->
+          <section class="border-bottom mb-4">
+            <img src="{{bug.image_file}}" class="img-fluid shadow-2-strong rounded-5 mb-4" alt="" />
 
-                <div class="row align-items-center mb-4">
-                  <div class="col-lg-6 text-center text-lg-start mb-3 m-lg-0">
-                    <span> Published <u>15.07.2020</u> by</span>
-                    <a href="" class="text-dark">Person Name</a>
-                    <button class="btn upvote">:top: {{upvote_count}}</button>
-                  </div>
-                </div>
-              </section>
+            <div class="row align-items-center mb-4">
+              <div class="col-lg-6 text-center text-lg-start mb-3 m-lg-0">
+                <span> Published <u>{{bug.created_at}}</u> by</span>
+                <a href="" class="text-dark">{{bug.user.username}}</a>
+                <button class="btn upvote"> 🔝{{bug.upvote_count}}</button>
+              </div>
+            </div>
+          </section>
 
-              <!--Section: Text-->
-              <section>
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Optio sapiente molestias consectetur. Fuga nulla officia error
-                  placeat veniam, officiis rerum laboriosam ullam molestiae
-                  magni velit laborum itaque minima doloribus eligendi! Lorem
-                  ipsum, dolor sit amet consectetur adipisicing elit. Optio
-                  sapiente molestias consectetur. Fuga nulla officia error
-                  placeat veniam, officiis rerum laboriosam ullam molestiae
-                  magni velit laborum itaque minima doloribus eligendi!
-                </p>
+          <!--Section: Text-->
+          <section>
+            <p>
+              {{bug.question}}
+            </p>
+          </section>
 
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum
-                  architecto ex ab aut tempora officia libero praesentium, sint
-                  id magnam eius natus unde blanditiis. Autem adipisci totam sit
-                  consequuntur eligendi.
-                </p>
-
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Optio odit consequatur porro sequi ab distinctio modi. Rerum
-                  cum dolores sint, adipisci ad veritatis laborum eaque illum
-                  saepe mollitia ut voluptatum.
-                </p>
-
+          <!--Section: Author-->
+          <section class="border-bottom mb-4 pb-4">
+            <div class="row">
+              <div class="col-9">
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Temporibus, libero repellat molestiae aperiam laborum aliquid
-                  atque magni nostrum, inventore perspiciatis possimus quia
-                  incidunt maiores molestias eaque nam commodi! Magnam, labore.
+                  Distinctio est ab iure inventore dolorum consectetur?
+                  Molestiae aperiam atque quasi consequatur aut? Repellendus
+                  alias dolor ad nam, soluta distinctio quis accusantium!
                 </p>
-
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
-                  temporibus nulla voluptatibus accusantium sapiente doloremque.
-                  Doloribus ratione laboriosam culpa. Ab officiis quidem,
-                  debitis nostrum in accusantium dolore veritatis eius est?
-                </p>
-              </section>
-
-              <!--Section: Author-->
-              <section class="border-bottom mb-4 pb-4">
-                <div class="row">
-                  <div class="col-9">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Distinctio est ab iure inventore dolorum consectetur?
-                      Molestiae aperiam atque quasi consequatur aut? Repellendus
-                      alias dolor ad nam, soluta distinctio quis accusantium!
-                    </p>
-                  </div>
-                </div>
-              </section>
-              <!--Section: Author-->
-
-              <!--Section: Comments-->
-              <section class="border-bottom mb-3">
-                <h2 class="text-center"><strong>See comments</strong></h2>
-
-                <!-- Comment -->
-                <div class="row mb-4">
-                  <div class="col-10">
-                    <p class="mb-2"><strong>Andrew Towers</strong></p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Distinctio est ab iure inventore dolorum consectetur?
-                      Molestiae aperiam atque quasi consequatur aut? Repellendus
-                      alias dolor ad nam, soluta distinctio quis accusantium!
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Comment -->
-                <div class="row mb-4">
-                  <div class="col-10">
-                    <p class="mb-2"><strong>Amanda Klenk</strong></p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Distinctio est ab iure inventore dolorum consectetur?
-                      Molestiae aperiam atque quasi consequatur aut? Repellendus
-                      alias dolor ad nam, soluta distinctio quis accusantium!
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Comment -->
-                <div class="row mb-4">
-                  <div class="col-10">
-                    <p class="mb-2"><strong>Alex Dale</strong></p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Distinctio est ab iure inventore dolorum consectetur?
-                      Molestiae aperiam atque quasi consequatur aut? Repellendus
-                      alias dolor ad nam, soluta distinctio quis accusantium!
-                    </p>
-                  </div>
-                </div>
-              </section>
-
-                   <!-- Comment -->
-                   <div class="row mb-4">
-                    <div class="col-10">
-                      <p class="mb-2"><strong>Jack Nowaczewski</strong></p>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Distinctio est ab iure inventore dolorum consectetur?
-                        Molestiae aperiam atque quasi consequatur aut? Repellendus
-                        alias dolor ad nam, soluta distinctio quis accusantium!
-                      </p>
-                    </div>
-                  </div>
-                </section>
-
-              <!--Section: Reply-->
-              <section>
-                <h2 class="text-center"><strong>Leave a comment</strong></h2>
-
-                <form>
-                  <!-- Name input -->
-                  <div class="form-outline mb-4">
-                    <input
-                      type="text"
-                      id="form4Example1"
-                      class="form-control"
-                    />
-                    <label class="form-label" for="form4Example1">Name</label>
-                  </div>
-
-                  <!-- Email input -->
-                  <div class="form-outline mb-4">
-                    <input
-                      type="email"
-                      id="form4Example2"
-                      class="form-control"
-                    />
-                    <label class="form-label" for="form4Example2"
-                      >Email address</label
-                    >
-                  </div>
-
-                  <!-- Message input -->
-                  <div class="form-outline mb-4">
-                    <textarea
-                      class="form-control"
-                      id="form4Example3"
-                      rows="4"
-                    ></textarea>
-                    <label class="form-label" for="form4Example3">Text</label>
-                  </div>
-
-                  <!-- Submit button -->
-                  <button type="submit" class="btn btn-primary btn-block mb-4">
-                    Add Comment
-                  </button>
-                </form>
-              </section>
-              <!--Section: Reply-->
+              </div>
             </div>
-          </div>
-          <!--Grid row-->
-        </div>
-    </body>
+          </section>
+          <!--Section: Author-->
 
+          
+          <!--Section: Comments-->
+          <section class="border-bottom mb-3">
+            <h2 class="text-center"><strong>See comments</strong></h2>
+
+            <!-- Comment -->
+            <div class="comments row mb-4">
+              {{#each bug.comments}}
+              <div class="meta">
+                {{user.username}} on {{created_at}}
+              </div>
+              <div class="comment col-10">
+                <p>
+                  {{comment_text}}
+                </p>
+              </div>
+              {{/each}}
+            </div>
+
+            <!--Section: Reply-->
+            <section>
+              <h2 class="text-center"><strong>Leave a comment</strong></h2>
+
+              <form>
+                <!-- Name input -->
+                <div class="form-outline mb-4">
+                  <input type="text" id="form4Example1" class="form-control" />
+                  <label class="form-label" for="form4Example1">Name</label>
+                </div>
+
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="email" id="form4Example2" class="form-control" />
+                  <label class="form-label" for="form4Example2">Email address</label>
+                </div>
+
+                <!-- Message input -->
+                <div class="form-outline mb-4">
+                  <textarea name="comment-body" class="form-control" id="form4Example3" rows="4"></textarea>
+                  <label class="form-label" for="form4Example3">Text</label>
+                </div>
+
+                <!-- Submit button -->
+                <button id="comment" type="submit" class="btn btn-primary btn-block mb-4">
+                  Add Comment
+                </button>
+              </form>
+            </section>
+            <!--Section: Reply-->
+        </div>
+      </div>
+      <!--Grid row-->
+    </div>
+</body>
