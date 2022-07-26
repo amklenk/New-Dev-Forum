@@ -1,4 +1,4 @@
-function loginHandler(event) {
+async function loginHandler(event) {
     event.preventDefault();
     const email = document.querySelector("#email").value.trim();
     const password = document.querySelector("#password").value.trim();
@@ -11,17 +11,15 @@ function loginHandler(event) {
                 email,
                 password
             }),
-            headers: {"Content-Type": "application.json"}
+            headers: { 'Content-Type': 'application/json' }
         });
 
-        if(response.ok){
-            document.location.replace('/homepage/')
-        } else{
+        if (response.ok) {
+            document.location.replace('/');
+        } else {
             alert(response.statusText);
         }
-        console.log(">>>>RESPONSE<<<<<",response)
     }
-    console.log(">>>>RESPONSE<<<<<", response);
   }
 
 
@@ -41,7 +39,7 @@ async function registerHandler(event) {
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
-      document.location.replace("/homepage/");
+      document.location.replace("/");
     } else {
       alert(response.statusText);
     }

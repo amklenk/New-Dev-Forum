@@ -1,51 +1,47 @@
 <body>
-      <section class="h-100">
-        <div class="container h-100">
-          <div class="row justify-content-sm-center h-100">
-            <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-12 col-sm-12">
-              <div class="text-center my-5 card shadow-lg">
-                <div class="card-body p-5">
-                  <h1 class="fs-4 card-title fw-bold mb-4">Submit Your Bug</h1>
-                  <form
-                    method="POST"
-                    class="needs-validation"
-                    novalidate=""
-                    autocomplete="off"
-                  >
-                  <div class="form-group">
-                    <label for="exampleFormControlSelect1">Select category</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                      <option>HTML 🦋</option>
-                      <option>CSS 🐛</option>
-                      <option>JavaScript 🐝</option>
-                      <option>Node.js 🐞</option>
-                      <option>MySQL 🦗</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                  <div class="card-footer border-0">
-                    <label class="form-label" for="customFile">Add screenshot here</label>
-                    <input type="file" class="form-control" id="customFile" />
-                 </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Tell us what's buggin' you...</label>
-                    <textarea class="form-control" style="height: 200px" id="exampleFormControlTextarea1" rows="3"></textarea>
-                  </div>
-                      <button type="submit" class="btn btn-primary ms-auto" id="submit">
-                        Submit
-                      </button>
-                    </div>
-                  </form>
+  <section class="h-100">
+    <div class="container h-100">
+      <div class="row justify-content-sm-center h-100">
+        <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-12 col-sm-12">
+          <div class="text-center my-5 card shadow-lg">
+            <div class="card-body p-5">
+              <h1 class="fs-4 card-title fw-bold mb-4">Submit Your Bug</h1>
+              <form method="POST" class="needs-validation" novalidate="" autocomplete="off">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Select category</label>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option>HTML 🦋</option>
+                    <option>CSS 🐛</option>
+                    <option>JavaScript 🐝</option>
+                    <option>Node.js 🐞</option>
+                    <option>MySQL 🦗</option>
+                    <option>Other</option>
+                  </select>
                 </div>
-              </div>
+                <div class="card-footer border-0">
+                  <label class="form-label" for="customFile">Add screenshot here</label>
+                  <input type="file" class="form-control" id="customFile" />
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Tell us what's buggin' you...</label>
+                  <textarea class="form-control" style="height: 200px" id="exampleFormControlTextarea1"
+                    rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary ms-auto" id="submit">
+                  Submit
+                </button>
             </div>
+            </form>
           </div>
         </div>
-      </section>
-      
-{{!-- 
-      <script src="/assets/js/login.js"></script> --}}
-      <script src="/assets/js/add-bug.js"></script>
-    </body>
-  </html>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <script src="/assets/js/add-bug.js"></script>
+</body>
+
+</html>
+
 </html>

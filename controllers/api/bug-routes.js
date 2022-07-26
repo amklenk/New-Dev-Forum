@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../../config/connection");
-//this is an authorizing helper
-// const withAuth = require('../../utils/auth');
+const withAuth = require('../../utils/withAuth');
 const { User, Bug, Comment, Upvote } = require("../../models");
 const multer = require('multer');
 const cloudinary = require('cloudinary');
@@ -108,7 +107,7 @@ router.get("/:id", (req, res) => {
 //post a new bug
 //POST api/bugs
 //expects {'language': 'JavaScript', 'question': 'I can't get my event listener to work. Nothing happens when I click the button on the deployed site.', 'image_file': 'bug10.png', 'user_id': 1}
-router.post("/", upload.single("bug_photo"), async (req, res) => {
+router.post("/", withAuth, upload.single("bug_photo"), async (req, res) => {
 let image;
   const {
     file: { buffer, mimetype },
@@ -155,31 +154,10 @@ let image;
 
 });
 
-// router.post('/',  async (req, res) => {
-//     const image =  await imagePost(req, res);
-//     if(image){
-//         const imageUrl = image.result.url;
-//         Bug.create({
-//           language: req.body.language,
-//           question: req.body.question,
-//           image_file: imageUrl,
-//           user_id: req.session.user_id,
-//         })
-//           .then((dbBugData) => res.json(dbBugData))
-//           .catch((err) => {
-//             console.log(err);
-//             res.status(500).json(err);
-//           });
-//     } else {
-//         res.status(404).json({ message: 'Image failed to upload' });
-//     }
-    
-// });
-
 //upvote a bug
 //PUT api/bugs/upvote
 //expects {'user_id': 3, 'bug_id': 7}
-router.put("/upvote", (req, res) => {
+router.put("/upvote", withAuth, (req, res) => {
   if (req.session) {
     Bug.upvote(
       { ...req.body, user_id: req.session.user_id },
@@ -195,7 +173,7 @@ router.put("/upvote", (req, res) => {
 
 //update a bug
 //PUT api/bugs/id#
-router.put("/:id", (req, res) => {
+router.put("/:id", withAuth, (req, res) => {
   Bug.update(
     {
       question: req.body.question,
@@ -220,7 +198,7 @@ router.put("/:id", (req, res) => {
 });
 
 //delete bug
-router.delete("/:id", (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
   Bug.destroy({
     where: {
       id: req.params.id,
