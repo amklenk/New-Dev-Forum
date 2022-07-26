@@ -25,9 +25,8 @@ const sess = {
 
 app.use(session(sess));
 
-// const helpers = require("./utils/helpers");
-//add back in helpers to create
-const hbs = exphbs.create({});
+const helpers = require("./utils/helpers");
+const hbs = exphbs.create({ helpers });
 
 //middleware
 app.engine("handlebars", hbs.engine);
