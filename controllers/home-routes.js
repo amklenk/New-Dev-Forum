@@ -45,8 +45,9 @@ router.get("/", (req, res) => {
     .then((dbBugData) => {
       console.log(dbBugData[0]);
       const bugs = dbBugData.map((bugs) => bugs.get({ plain: true }));
-      res.render("homepage", { bugs
-       // ,loggedIn: req.session.loggedIn
+      res.render("homepage", {
+        bugs,
+        // ,loggedIn: req.session.loggedIn
       });
     })
     .catch((err) => {
@@ -64,8 +65,17 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+//logs user in and redirects to homepage
+router.get("/register", (req, res) => {
+  res.render("register");
+});
+
+router.get("/addbug", (req, res) => {
+  res.render("addbug");
+});
+
 //renders a single bug when comment button is clicked
-router.get('/bug/:id', (req, res) => {
+router.get("/bug/:id", (req, res) => {
   Bug.findOne({
     where: {
       id: req.params.id,
@@ -98,19 +108,18 @@ router.get('/bug/:id', (req, res) => {
       },
     ],
   })
-  .then((dbBugData) => {
-    if (!dbBugData) {
-        res.status(404).json({ message: 'No bug found with this id' });
+    .then((dbBugData) => {
+      if (!dbBugData) {
+        res.status(404).json({ message: "No bug found with this id" });
         return;
-    }
-    const bug = dbBugData.get({ plain: true });
-    res.render('seebug', { bug });
-  })
-  .catch((err) => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+      }
+      const bug = dbBugData.get({ plain: true });
+      res.render("seebug", { bug });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
-
 
 module.exports = router;

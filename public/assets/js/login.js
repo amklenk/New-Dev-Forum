@@ -1,7 +1,7 @@
 function loginHandler(event) {
     event.preventDefault();
-    const email = document.querySelector("#email").value.trim();
-    const password = document.querySelector("#password").value.trim();
+    const email = document.querySelector(".email-form").value.trim();
+    const password = document.querySelector(".password-form").value.trim();
     if(email && password){
         const response = await fetch("/api/users/login", {
             method: 'post',
@@ -13,7 +13,7 @@ function loginHandler(event) {
         });
 
         if(response.ok){
-            document.location.replace('/')
+            document.location.replace('/homepage')
         } else{
             alert(response.statusText);
         }
@@ -25,9 +25,9 @@ function loginHandler(event) {
 
 async function registerHandler(event) {
   event.preventDefault();
-  const username = document.querySelector("").value.trim();
-  const email = document.querySelector("").value.trim();
-  const password = document.querySelector("").value.trim();
+  const username = document.querySelector(".register-name").value.trim();
+  const email = document.querySelector(".register-email").value.trim();
+  const password = document.querySelector(".register-password").value.trim();
 
   if (username && email && password) {
     const response = await fetch("./api/users", {
@@ -39,7 +39,7 @@ async function registerHandler(event) {
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
-      document.location.replace("/index/");
+      document.location.replace("/homepage/");
     } else {
       alert(response.statusText);
     }
@@ -47,9 +47,14 @@ async function registerHandler(event) {
 }
 
 document
-  .querySelector(".loginButton")
+  .querySelector(".login-button")
   .addEventListener("submit", loginHandler);
 
 document
-  .querySelector(".needs-validation")
+  .querySelector(".register-button")
   .addEventListener("submit", registerHandler);
+
+var test = document.querySelector(".login-button")
+test.onclick = function () { 
+  console.log("LOGIN BUTTON CLICKED!!!!!!!!!!!!!");
+}
