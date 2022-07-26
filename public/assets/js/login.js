@@ -1,7 +1,9 @@
 function loginHandler(event) {
     event.preventDefault();
-    const email = document.querySelector(".email-form").value.trim();
-    const password = document.querySelector(".password-form").value.trim();
+    const email = document.querySelector("#email").value.trim();
+    const password = document.querySelector("#password").value.trim();
+    console.log(email);
+    console.log(password);
     if(email && password){
         const response = await fetch("/api/users/login", {
             method: 'post',
@@ -13,7 +15,7 @@ function loginHandler(event) {
         });
 
         if(response.ok){
-            document.location.replace('/homepage')
+            document.location.replace('/homepage/')
         } else{
             alert(response.statusText);
         }
@@ -47,7 +49,7 @@ async function registerHandler(event) {
 }
 
 document
-  .querySelector(".login-button")
+  .querySelector("#login-form")
   .addEventListener("submit", loginHandler);
 
 document
