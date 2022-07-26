@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
+const withAuth = require('../utils/withAuth');
 const { User, Bug, Comment, Upvote } = require("../models");
 
 // get all bugs for home page
@@ -72,7 +73,7 @@ router.get("/addbug", (req, res) => {
 });
 
 //renders a single bug when comment button is clicked
-router.get("/bug/:id", (req, res) => {
+router.get("/bug/:id", withAuth, (req, res) => {
   Bug.findOne({
     where: {
       id: req.params.id,
@@ -111,7 +112,7 @@ router.get("/bug/:id", (req, res) => {
         return;
       }
       const bug = dbBugData.get({ plain: true });
-      res.render("seebug", { bug });
+      res.render("seebug", { bug, loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.log(err);
@@ -119,7 +120,7 @@ router.get("/bug/:id", (req, res) => {
     });
 });
 
-router.get("/language/:language", (req, res) => {
+router.get("/language/:language", withAuth, (req, res) => {
   console.log("<<<<<<<<>>>>>>>>");
   Bug.findAll({
     where: {
