@@ -12,10 +12,10 @@
 
             <div class="row align-items-center mb-4">
               <div class="col-lg-6 text-center text-lg-start mb-3 m-lg-0">
-                <span> Published <u>{{bug.created_at}}</u> by</span>
+                <span> Published <u>{{format_date bug.created_at}}</u> by</span>
                 <a href="" class="text-dark">{{bug.user.username}}</a>
                 {{#if loggedIn}}
-                <button class="btn upvote">🔝{{bug.upvote_count}}</button>
+                <button class="btn upvote">🔝{{bug.upvote_count}} {{format_plural "upvote" bug.upvote_count}}</button>
                 {{/if}}
               </div>
             </div>
@@ -36,7 +36,7 @@
             <div class="comments row mb-4">
               {{#each bug.comments}}
               <div class="meta">
-                {{user.username}} on {{created_at}}
+                {{user.username}} on {{format_date created_at}}
               </div>
               <div class="comment col-10">
                 <p>
@@ -51,23 +51,11 @@
             <section>
               <h2 class="text-center"><strong>Leave a comment</strong></h2>
 
-              <form>
-                <!-- Name input -->
-                {{!-- <div class="form-outline mb-4">
-                  <input type="text" id="form4Example1" class="form-control" />
-                  <label class="form-label" for="form4Example1">Name</label>
-                </div>
-
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                  <input type="email" id="form4Example2" class="form-control" />
-                  <label class="form-label" for="form4Example2">Email address</label>
-                </div> --}}
-
+              <form id="comment-form">
                 <!-- Message input -->
                 <div class="form-outline mb-4">
                   <textarea name="comment-body" class="form-control" id="form4Example3" rows="4"></textarea>
-                  <label class="form-label" for="form4Example3">Text</label>
+                  <label class="form-label" for="form4Example3"></label>
                 </div>
 
                 <!-- Submit button -->
