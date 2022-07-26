@@ -3,13 +3,14 @@
   <div class="card mb-4">
     <a href="#!"><img class="card-img-top" src="{{image_file}}" alt="..." /></a>
     <div class="card-body">
-      <div class="small text-muted">{{created_at}}</div>
+      <div class="small text-muted">{{format_date created_at}}</div>
       <h2 class="card-title h4">{{language}}</h2>
       <p class="card-text">
         {{question}}
       </p>
       <a class="btn btn-primary" href="/bug/{{id}}">See comments</a>
-      <button class="btn upvote">🔝{{upvote_count}}</button>
+      <p>{{upvote_count}} {{format_plural "upvote" upvote_count}}</p>
+      {{!-- <button class="btn upvote">🔝{{upvote_count}}</button> --}}
     </div>
   </div>
 

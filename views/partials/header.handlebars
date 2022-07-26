@@ -10,10 +10,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          {{#if loggedIn}}
           <li class="nav-item">
             <a class="nav-link" href="/addbug">Post New Bug</a>
           </li>
-          {{#if loggedIn}}
           <li class="nav-item">
             <button id="logout" class="nav-link active text-white bg-dark border-0">Logout</button>
           </li>
@@ -27,5 +27,3 @@
     </div>
   </nav>
 </header>
-
- {{!-- <script src="/assets/js/logout.js"></script> --}}
