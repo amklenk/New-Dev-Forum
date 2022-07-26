@@ -11,13 +11,8 @@
             <img src="{{bug.image_file}}" class="img-fluid shadow-2-strong rounded-5 mb-4" alt="" />
 
             <div class="row align-items-center mb-4">
-<<<<<<< HEAD
               <div class="col-lg-12 text-center text-lg-start mb-3 m-lg-0">
-                <span> Published <u>{{bug.created_at}}</u> by</span>
-=======
-              <div class="col-lg-6 text-center text-lg-start mb-3 m-lg-0">
                 <span> Published <u>{{format_date bug.created_at}}</u> by</span>
->>>>>>> develop
                 <a href="" class="text-dark">{{bug.user.username}}</a>
                 {{#if loggedIn}}
                 <button id="upvote" class="btn">🔝{{bug.upvote_count}} {{format_plural "upvote" bug.upvote_count}}</button>
