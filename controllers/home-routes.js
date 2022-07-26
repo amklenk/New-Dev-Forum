@@ -62,6 +62,15 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+//logs user in and redirects to homepage
+router.get("/register", (req, res) => {
+  res.render("register");
+});
+
+router.get("/addbug", (req, res) => {
+  res.render("addbug");
+});
+
 //renders a single bug when comment button is clicked
 router.get("/bug/:id", (req, res) => {
   Bug.findOne({
