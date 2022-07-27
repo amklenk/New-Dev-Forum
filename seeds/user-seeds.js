@@ -2,6 +2,7 @@
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
 
+//seeded data for users with password encryption
 const userData = [
   {
     username: "amkdev333",

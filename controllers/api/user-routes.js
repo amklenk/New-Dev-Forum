@@ -1,11 +1,12 @@
-const router = require("express").Router();
-const { User, Bug, Comment, Upvote } = require("../../models");
+const router = require('express').Router();
+const { User, Bug, Comment, Upvote } = require('../../models');
 
+//routes to interact with the database to see, add (sign up), delete, update, or log a user in or out
 //get all
 //GET api/users
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   User.findAll({
-    attributes: { exclude: ["password"] },
+    attributes: { exclude: ['password'] },
   })
     .then((dbUserData) => res.json(dbUserData))
     .catch((err) => {
@@ -16,9 +17,9 @@ router.get("/", (req, res) => {
 
 //get one
 //GET api/users/id#
-router.get("/:id", (req, res) => {
+router.get('/:id', (req, res) => {
   User.findOne({
-    attributes: { exclude: ["password"] },
+    attributes: { exclude: ['password'] },
     where: {
       id: req.params.id,
     },
@@ -26,27 +27,27 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Bug,
-        attributes: ["id", "language", "question", "image_file", "created_at"],
+        attributes: ['id', 'language', 'question', 'image_file', 'created_at'],
       },
       {
         model: Comment,
-        attributes: ["id", "comment_text", "created_at"],
+        attributes: ['id', 'comment_text', 'created_at'],
         include: {
           model: Bug,
-          attributes: ["question"],
+          attributes: ['question'],
         },
       },
       {
         model: Bug,
-        attributes: ["question"],
+        attributes: ['question'],
         through: Upvote,
-        as: "upvoted_bugs",
+        as: 'upvoted_bugs',
       },
     ],
   })
     .then((dbUserData) => {
       if (!dbUserData) {
-        res.status(404).json({ message: "No user found with this id" });
+        res.status(404).json({ message: 'No user found with this id' });
         return;
       }
       res.json(dbUserData);
@@ -59,7 +60,7 @@ router.get("/:id", (req, res) => {
 
 //post a new user
 //POST api/users
-router.post("/", (req, res) => {
+router.post('/', (req, res) => {
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -108,7 +109,7 @@ router.post('/login', (req, res) => {
 });
 
 //logout
-router.post("/logout", (req, res) => {
+router.post('/logout', (req, res) => {
   //destroy the session to log out
   if (req.session.loggedIn) {
     req.session.destroy(() => {
@@ -121,8 +122,8 @@ router.post("/logout", (req, res) => {
 
 //updates a user
 //PUT /api/users/id#
-// expects following format {'username': 'Lernantino', 'email': 'lernantino@gmail.com', 'password': 'password1234'}
-router.put("/:id", (req, res) => {
+// expects following format {"username": "Guest", "email": "guestuser@gmail.com", "password": "password1234"}
+router.put('/:id', (req, res) => {
   User.update(req.body, {
     individualHooks: true,
     where: {
@@ -131,7 +132,7 @@ router.put("/:id", (req, res) => {
   })
     .then((dbUserData) => {
       if (!dbUserData[0]) {
-        res.status(404).json({ message: "No user found with this id" });
+        res.status(404).json({ message: 'No user found with this id' });
         return;
       }
       res.json(dbUserData);
@@ -144,7 +145,7 @@ router.put("/:id", (req, res) => {
 
 //deletes a user
 //DELETE /api/users/id#
-router.delete("/:id", (req, res) => {
+router.delete('/:id', (req, res) => {
   User.destroy({
     where: {
       id: req.params.id,
@@ -152,7 +153,7 @@ router.delete("/:id", (req, res) => {
   })
     .then((dbUserData) => {
       if (!dbUserData) {
-        res.status(404).json({ message: "No user found with this id" });
+        res.status(404).json({ message: 'No user found with this id' });
         return;
       }
       res.json(dbUserData);

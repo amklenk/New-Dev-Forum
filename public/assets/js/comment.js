@@ -1,20 +1,21 @@
+//Allows the user to comment on a bug and send that comment data to the database
 async function commentFormHandler(event) {
   event.preventDefault();
 
   const comment_text = document.querySelector('textarea[name="comment-body"]').value.trim();
 
-  const bug_id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
+  const bug_id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
   ];
 
   if (comment_text) {
-    const response = await fetch("/api/comments", {
-      method: "POST",
+    const response = await fetch('/api/comments', {
+      method: 'POST',
       body: JSON.stringify({
         bug_id,
         comment_text,
       }),
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
@@ -25,4 +26,4 @@ async function commentFormHandler(event) {
   }
 }
 
-document.querySelector("#comment-form").addEventListener("submit", commentFormHandler);
+document.querySelector('#comment-form').addEventListener('submit', commentFormHandler);

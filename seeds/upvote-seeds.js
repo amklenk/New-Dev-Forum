@@ -1,5 +1,6 @@
 const { Upvote } = require("../models");
 
+//seeded data for upvotes
 const upvoteData = [
     {
         "user_id": 1,
