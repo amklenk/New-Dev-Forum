@@ -69,8 +69,8 @@ router.get("/register", (req, res) => {
 });
 
 router.get("/addbug", withAuth, (req, res) => {
-//something abotu req.session.loggedIn or whatever
-    res.render("addbug");
+//something about req.session.loggedIn or whatever
+    res.render("addbug", { loggedIn: req.session.loggedIn });
 });
 
 //renders a single bug when comment button is clicked
