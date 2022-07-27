@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-//this is an authorizing helper
-// const withAuth = require('../../utils/auth');
+const withAuth = require('../../utils/withAuth');
 const { User, Bug, Comment, Upvote } = require('../../models');
 
+//routes to interact with the database to see, add, or delete comments
 //get the comments for a bug
 //GET api/comments
 router.get('/', (req, res) => {

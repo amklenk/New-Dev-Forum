@@ -1,3 +1,4 @@
+{{!-- page to see one bug when comments button is clicked on homepage --}}
 {{> header }}
 <body>
   <main class="bg-light">
@@ -36,7 +37,7 @@
             <div class="comments row">
               {{#each bug.comments}}
               <div class="meta fw-bold">
-                {{user.username}} on {{created_at}}
+                {{user.username}} on {{format_date created_at}}
               </div>
               <div class="comment col-10">
                 <p>

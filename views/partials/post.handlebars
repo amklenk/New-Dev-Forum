@@ -1,8 +1,8 @@
-{{! Bug Posts iteration }}
+{{!-- partial to render bugs on certain pages --}}
 {{#each bugs}}
 <div class="col-lg-4">
   <div class="card mb-4">
-    <a href="#!"><img class="card-img-top" src="{{image_file}}" alt="..." /></a>
+    <img class="card-img-top" src="{{image_file}}" alt="..." />
     <div class="card-body">
       <div class="small text-muted">{{format_date created_at}}</div>
       <h2 class="card-title h4">{{language}}</h2>
@@ -11,7 +11,6 @@
       </p>
       <a class="btn btn-primary" href="/bug/{{id}}">See comments</a>
       <p>{{upvote_count}} {{format_plural "upvote" upvote_count}}</p>
-      {{!-- <button class="btn upvote">🔝{{upvote_count}}</button> --}}
     </div>
   </div>
 </div>

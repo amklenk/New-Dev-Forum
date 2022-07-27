@@ -5,6 +5,7 @@ const seedUpvotes = require("./upvote-seeds");
 
 const sequelize = require("../config/connection");
 
+// seeds data to database
 const seedAll = async () => {
   await sequelize.sync({ force: true });
   console.log("\n----- DATABASE SYNCED -----\n");

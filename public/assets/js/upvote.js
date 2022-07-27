@@ -1,19 +1,19 @@
+//Allows the user to upvote on a bug and update the bug in the database
 async function upvoteClickHandler(event) {
-  console.log("click!");
   event.preventDefault();
 
-  const id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
+  const id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
   ];
 
   console.log(id);
-  const response = await fetch("/api/bugs/upvote", {
-    method: "PUT",
+  const response = await fetch('/api/bugs/upvote', {
+    method: 'PUT',
     body: JSON.stringify({
       bug_id: id,
     }),
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
 
@@ -24,4 +24,4 @@ async function upvoteClickHandler(event) {
   }
 }
 
-document.querySelector("#upvote").addEventListener("click", upvoteClickHandler);
+document.querySelector('#upvote').addEventListener('click', upvoteClickHandler);

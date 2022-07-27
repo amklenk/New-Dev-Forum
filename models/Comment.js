@@ -1,8 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
+// Creates comment table in database
 class Comment extends Model {}
-
 Comment.init({
     id:{
         type: DataTypes.INTEGER,
@@ -40,6 +40,5 @@ Comment.init({
 
 });
 
-//export
 module.exports = Comment;
 
