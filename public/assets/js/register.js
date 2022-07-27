@@ -7,11 +7,12 @@ async function registerHandler(event) {
 
   if (username && email && password) {
     const response = await fetch('/api/users', {
+      method: 'post',
       body: JSON.stringify({
         username,
         email,
-        password,
-      }),
+        password
+    }),
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
@@ -23,4 +24,5 @@ async function registerHandler(event) {
 }
 
 document.querySelector('#register-form').addEventListener('submit', registerHandler);
+
 
