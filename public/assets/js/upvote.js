@@ -1,10 +1,13 @@
 async function upvoteClickHandler(event) {
+  console.log("click!");
   event.preventDefault();
 
   const id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
   ];
-  const response = await fetch("/api/posts/upvote", {
+
+  console.log(id);
+  const response = await fetch("/api/bugs/upvote", {
     method: "PUT",
     body: JSON.stringify({
       bug_id: id,
@@ -21,4 +24,4 @@ async function upvoteClickHandler(event) {
   }
 }
 
-document.querySelector(".upvote").addEventListener("click", upvoteClickHandler);
+document.querySelector("#upvote").addEventListener("click", upvoteClickHandler);

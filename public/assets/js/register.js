@@ -1,21 +1,25 @@
-function registerUser(username, password) {
-  // check if the username is available
+async function registerHandler(event) {
+  event.preventDefault();
+  const username = document.querySelector(".register-name").value.trim();
+  const email = document.querySelector(".register-email").value.trim();
+  const password = document.querySelector(".register-password").value.trim();
 
-  if (usernameIsAvailable(username)) {
-    // if the username is available, register the user
-
-    register(username, password);
-  } else {
-    // if the username is not available, throw an error
-
-    throw new Error("That username is already taken!");
+  if (username && email && password) {
+    const response = await fetch("/api/users", {
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+    if (response.ok) {
+      document.location.replace("/");
+    } else {
+      alert(response.statusText);
+    }
   }
 }
 
-function usernameIsAvailable(username) {
-  // check the database to see if the username is available
-}
+document.querySelector("#register-form").addEventListener("submit", registerHandler);
 
-function register(username, password) {
-  // add the user to the database
-}

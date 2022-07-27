@@ -1,4 +1,5 @@
 <!-- Page header with logo and tagline-->
+{{> header}}
 <main class="py-5 bg-light border-bottom mb-4">
   <div class="container">
     <div class="text-center my-5">
@@ -14,13 +15,11 @@
       <div class="col-lg-8">
         <!-- Nested row for non-featured bug posts-->
         <div class="row">
-          <div class="col-lg-6">
-            <!-- bug posts-->
-            {{> post}}
-          </div>
-          </div>
-          <!-- Pagination-->
-          <nav aria-label="Pagination">
+          <!-- bug posts-->
+          {{> post}}
+        </div>
+        {{!-- commented out for future functionality --}}
+        {{!-- <nav aria-label="Pagination">
             <hr class="my-0" />
             <ul class="pagination justify-content-center my-4">
               <li class="page-item disabled">
@@ -39,47 +38,35 @@
                 <a class="page-link" href="#!">Older</a>
               </li>
             </ul>
-          </nav>
-        </div>
-        <!-- Side widgets-->
-        <div class="col-lg-4">
-          <!-- Search box-->
-          {{!-- <div class="card mb-4">
-            <div class="card-header">Search 🐞</div>
-            <div class="card-body">
-              <div class="input-group">
-                <input class="form-control" type="text" placeholder="Enter search term..."
-                  aria-label="Enter search term..." aria-describedby="button-search" />
-                <button class="btn btn-primary" id="button-search" type="button">
-                  Go!
-                </button>
+          </nav> --}}
+      </div>
+      <!-- Side widgets-->
+      <div class="col-lg-4">
+        <!-- Categories box-->
+        <div class="card mb-4">
+          <div class="card-header">Categories</div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <ul class="list-unstyled mb-0">
+                  <li><a href="/language/HTML 🦋">HTML</a> 🦋</li>
+                  <li><a href="/language/CSS 🐛">CSS</a> 🐛</li>
+                  <li><a href="/language/JavaScript 🐝">JavaScript</a> 🐝</li>
+                </ul>
               </div>
-            </div>
-          </div> --}}
-          <!-- Categories box-->
-          <div class="card mb-4">
-            <div class="card-header">Categories</div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-6">
-                  <ul class="list-unstyled mb-0">
-                    <li><a href="/language/HTML 🦋">HTML</a> 🦋</li>
-                    <li><a href="/language/CSS 🐛">CSS</a> 🐛</li>
-                    <li><a href="/language/JavaScript 🐝">JavaScript</a> 🐝</li>
-                  </ul>
-                </div>
-                <div class="col-sm-6">
-                  <ul class="list-unstyled mb-0">
-                    <li><a href="/language/Node.js 🐞">Node.js</a> 🐞</li>
-                    <li><a href="/language/Express.js 🐜">Express.js</a> 🐜</li>
-                    <li><a href="/language/MySQL 🦗">MySQL</a> 🦗</li>
-                    <li><a href="/language/Other">Other</a> </li>
-                  </ul>
-                </div>
+              <div class="col-sm-6">
+                <ul class="list-unstyled mb-0">
+                  <li><a href="/language/Node.js 🐞">Node.js</a> 🐞</li>
+                  <li><a href="/language/Express.js 🐜">Express.js</a> 🐜</li>
+                  <li><a href="/language/MySQL 🦗">MySQL</a> 🦗</li>
+                  <li><a href="/language/Other">Other</a> </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </main>
+{{> footer}}
