@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 3001;
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
+// user's session object
 const sess = {
   secret: "Super secret secret",
   cookie: { maxAge: 1200000, httpOnly: true, secure: false, sameSite: 'strict', },
@@ -22,20 +23,22 @@ const sess = {
     db: sequelize,
   }),
 };
-
-app.use(session(sess));
-
+//allows for helpers in handlebars
 const helpers = require("./utils/helpers");
 const hbs = exphbs.create({ helpers });
 
-//middleware
+// middleware starts
+app.use(session(sess));
+
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+// middleware ends
 
+//allows use of cloudinary with protected api information
 cloudinary.config({
   cloud_name: process.env.cloud_name,
   api_key: process.env.api_key,

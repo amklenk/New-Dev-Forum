@@ -1,5 +1,6 @@
 const { Comment } = require("../models");
 
+//seeded data for comments
 const commentData = [
   {
     comment_text:

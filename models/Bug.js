@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
+// Creates bug table in database, uses static keyword to connect upvote with bug
 class Bug extends Model {
     static upvote(body, models) {
         return models.Upvote.create({
@@ -74,5 +75,4 @@ underscored: true,
 modelName: 'bug'
 });
 
-//export
 module.exports = Bug;

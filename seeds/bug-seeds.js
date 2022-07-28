@@ -1,5 +1,6 @@
 const { Bug } = require("../models");
 
+//seeded data for bugs
 const bugData = [
   {
     language: "JavaScript 🐝",

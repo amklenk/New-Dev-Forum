@@ -1,7 +1,8 @@
-var quoteTextEl = document.querySelector("#quoteText");
-var quoteAuthorEl = document.querySelector("#quoteAuthor");
+var quoteTextEl = document.querySelector('#quoteText');
+var quoteAuthorEl = document.querySelector('#quoteAuthor');
 
-fetch("https://type.fit/api/quotes")
+//Renders a motivational quote in the footer 
+fetch('https://type.fit/api/quotes')
   .then((response) => response.json())
   .then((data) => {
     var randomIndex = Math.floor(Math.random() * data.length);

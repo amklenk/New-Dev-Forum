@@ -1,8 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
+// Creates upvote table in database
 class Upvote extends Model {}
-
 Upvote.init(
   {
     id: {
@@ -12,7 +12,7 @@ Upvote.init(
     },
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'user',
         key: 'id'
@@ -20,7 +20,7 @@ Upvote.init(
     },
     bug_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'bug',
         key: 'id'
