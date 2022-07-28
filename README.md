@@ -102,11 +102,12 @@ DB_USER="root"
 DB_PASSWORD="userpasswordhere"
 ``````````````````````````````
 
-The application can be accessed via the backend using Insomnia. The application can be accessed via the front-end by turning on the server and visiting localhost:3001/ or by visiting the Heroku app, see Links for the site link.
+The user also needs to have the .env variables for cloudinary. Please contact one of the creators below via email to gain access. The application can be accessed via the backend using Insomnia. The application can be accessed via the front-end by turning on the server and visiting localhost:3001/ or by visiting the Heroku app, see Links for the site link.
 
 ## License
 The badge at the top of the page shows that this project is licensed under MIT. The link for that license is shown below.
 - [License: MIT](https://opensource.org/licenses/MIT)
+
 ## How to Contribute
 Please fork and clone the repository and use a pull request to add or make changes to the current repository.
 
