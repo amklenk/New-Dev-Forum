@@ -34,11 +34,13 @@ The following technologies were used to complete the project:
 * Cloudinary
 * Multer
 * Darkmode.js
+* Type.Fit Quote API
 
 ## Table of Contents
 - [Installation](#installation)
 - [Links](#links)
 - [Usage](#usage)
+- [Credits](#credits)
 - [License](#license)
 - [How to Contribute](#how-to-contribute)
 - [Questions](#questions)
@@ -103,6 +105,10 @@ DB_PASSWORD="userpasswordhere"
 ``````````````````````````````
 
 The user also needs to have the .env variables for cloudinary. Please contact one of the creators below via email to gain access. The application can be accessed via the backend using Insomnia. The application can be accessed via the front-end by turning on the server and visiting localhost:3001/ or by visiting the Heroku app, see Links for the site link.
+
+## Credits
+The image used for the CSS seed bug is from the following website: 
+- [JavaPoint: How to Center a Button in CSS?](https://www.javatpoint.com/how-to-center-a-button-in-css)
 
 ## License
 The badge at the top of the page shows that this project is licensed under MIT. The link for that license is shown below.
