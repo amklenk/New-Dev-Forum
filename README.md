@@ -88,7 +88,7 @@ The dashboard page, after logging in:
 ![dashboard page image](./public/assets/images/README%20Images/dashboard.png)
 
 A single-bug page (logged in):
-![single-post image](./public/assets/images/README%20Images/postbug.png)
+![single-post image](./public/assets/images/README%20Images/singlebug.png)
 
 A post-a-bug page:
 ![post-a-bug image](./public/assets/images/README%20Images/postbug.png)
